@@ -1,7 +1,12 @@
 import React from 'react';
+import { ZoeRoutes } from './components';
 
 function App() {
-  return <div className='App' />;
+  return (
+    <div>
+      <ZoeRoutes />
+    </div>
+  );
 }
 
 export default App;

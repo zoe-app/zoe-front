@@ -24,6 +24,7 @@
         "prettier"
     ],
     "rules": {
+        "import/prefer-default-export": "off",
         "quotes": ["error", "single"],
         "import/no-unresolved": "error",
         "import/extensions": [
