@@ -5,4 +5,5 @@ export const GoalList = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 97vw;
 `;

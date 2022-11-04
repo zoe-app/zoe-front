@@ -3,9 +3,11 @@
 import React, { useState } from 'react';
 import { Goal, Task } from '../../interfaces';
 import { goalsService, tasksService } from '../../service';
-import { Container, RowContainer } from '../Container';
+import { Container, RowContainer, Title } from '..';
 import { TaskComponent } from '../Tasks/TaskComponent';
-import { Title } from '../Titles';
+import { TextInput } from '../Input/TextInput';
+import { Button, DeleteButton } from '../Buttons/Button';
+import { TaskWrapper } from '../Tasks/Tasks';
 
 interface Props {
   goal: Goal;
@@ -49,34 +51,59 @@ export function GoalsComponent(props: Props) {
   };
 
   return (
-    <Container>
-      <RowContainer>
-        <Title>{goalState.name}</Title>
-        <button type='button' onClick={() => deleteGoal(goal.goalId)}>
-          Excluir meta
-        </button>
-      </RowContainer>
-      <RowContainer>
-        <input
-          type='text'
-          placeholder='Nova tarefa'
-          value={taskText}
-          onChange={(e) => setTaskText(e.target.value)}
-        />
-        <button type='button' onClick={addNewTask}>
-          Adicionar
-        </button>
-      </RowContainer>
-      {goalState.tasks.map((task) => {
-        return (
-          <TaskComponent
-            key={task.taskId}
-            task={task}
-            updateIsDone={updateIsDone}
-            deleteTask={deleteTask}
+    <Container
+      style={{
+        marginBottom: '2rem',
+        backgroundColor: 'white',
+        width: '95vw',
+        padding: '0px 10px 10px 10px',
+        borderRadius: 10,
+      }}
+    >
+      <RowContainer
+        style={{
+          justifyContent: 'space-between',
+          backgroundColor: '#83BCFF',
+          width: '100%',
+          padding: 10,
+          marginBottom: 10,
+          borderRadius: '10px 10px 0px 0px',
+        }}
+      >
+        <RowContainer>
+          <Title>{goalState.name}</Title>
+          <DeleteButton
+            style={{ marginLeft: 10 }}
+            type='button'
+            onClick={() => deleteGoal(goal.goalId)}
+          >
+            X
+          </DeleteButton>
+        </RowContainer>
+        <RowContainer>
+          <TextInput
+            type='text'
+            placeholder='Nova tarefa'
+            value={taskText}
+            onChange={(e) => setTaskText(e.target.value)}
           />
-        );
-      })}
+          <Button style={{ marginLeft: 10 }} type='button' onClick={addNewTask}>
+            Adicionar
+          </Button>
+        </RowContainer>
+      </RowContainer>
+      <TaskWrapper>
+        {goalState.tasks.map((task) => {
+          return (
+            <TaskComponent
+              key={task.taskId}
+              task={task}
+              updateIsDone={updateIsDone}
+              deleteTask={deleteTask}
+            />
+          );
+        })}
+      </TaskWrapper>
     </Container>
   );
 }

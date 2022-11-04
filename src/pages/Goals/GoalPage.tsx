@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Container } from '../../components/Container';
-import { GoalsComponent } from '../../components/Goals/Goals';
-import { GoalList } from '../../components/Goals/GoalsList';
-import { Title } from '../../components/Titles';
+import {
+  Container,
+  GoalsComponent,
+  GoalList,
+  RowContainer,
+  TextInput,
+  Button,
+} from '../../components';
 import { Goal } from '../../interfaces';
 import { goalsService } from '../../service';
 
@@ -27,17 +31,25 @@ export function GoalsPage() {
   };
 
   return (
-    <Container>
-      <Title>Metas</Title>
-      <input
-        type='text'
-        placeholder='Nova meta'
-        value={goalText}
-        onChange={(e) => setGoalText(e.target.value)}
-      />
-      <button type='button' onClick={addNewGoal}>
-        Adicionar
-      </button>
+    <Container style={{ marginTop: '2rem' }}>
+      <RowContainer
+        style={{
+          marginBottom: '2rem',
+          justifyContent: 'space-between',
+          width: '97%',
+        }}
+      >
+        <TextInput
+          type='text'
+          placeholder='Nova meta'
+          style={{ width: '100%' }}
+          value={goalText}
+          onChange={(e) => setGoalText(e.target.value)}
+        />
+        <Button style={{ marginLeft: 10 }} type='button' onClick={addNewGoal}>
+          Adicionar
+        </Button>
+      </RowContainer>
       {goals.map((goal) => {
         return (
           <GoalList key={goal.goalId}>

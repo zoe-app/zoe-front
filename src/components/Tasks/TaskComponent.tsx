@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Task } from '../../interfaces';
-import { CheckButton } from '../Buttons';
+import { CheckButton } from '..';
 import { TaskContainer } from './Tasks';
+import { DeleteButton } from '../Buttons/Button';
+import { TitleSmall } from '../Titles/Title';
 
 interface Props {
   task: Task;
@@ -14,10 +16,9 @@ export function TaskComponent(props: Props) {
   const [state, setState] = useState<Task>(task);
 
   return (
-    <TaskContainer>
-      <span>{task.text}</span>
+    <TaskContainer style={{ marginBottom: 10 }}>
       <CheckButton
-        type='radio'
+        type='checkbox'
         value={task.taskId}
         checked={task.isDone}
         key={task.taskId}
@@ -28,9 +29,12 @@ export function TaskComponent(props: Props) {
           return null;
         }}
       />
-      <button type='button' onClick={() => deleteTask(task.taskId)}>
-        Deletar tarefa
-      </button>
+      <TitleSmall style={{ marginLeft: 10, marginRight: 10 }}>
+        {task.text}
+      </TitleSmall>
+      <DeleteButton type='button' onClick={() => deleteTask(task.taskId)}>
+        X
+      </DeleteButton>
     </TaskContainer>
   );
 }

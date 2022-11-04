@@ -1,11 +1,13 @@
 import React from 'react';
+import { GlobalStyles, NavBar } from './components';
 import { ZoeRoutes } from './Routes';
 
 function App() {
   return (
-    <div>
-      <ZoeRoutes />
-    </div>
+    <ZoeRoutes>
+      <NavBar />
+      <GlobalStyles />
+    </ZoeRoutes>
   );
 }
 
