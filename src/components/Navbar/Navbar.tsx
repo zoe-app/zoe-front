@@ -16,18 +16,31 @@ export function NavBar() {
   return (
     <Container>
       <Title>Zoe</Title>
-      <Button onClick={logOut}>
-        <Link
-          style={{ ...btnStyle }}
-          to={location.pathname === '/' ? '/login' : '/'}
-        >
-          {location.pathname === '/login'
-            ? 'Home'
-            : localStorage.getItem('AuthToken')
-            ? 'Sair'
-            : 'Entrar'}
-        </Link>
-      </Button>
+      <div>
+        <Button style={{ marginRight: 10 }}>
+          <Link
+            style={{ ...btnStyle }}
+            to={location.pathname === '/' ? '/cadastro' : '/'}
+          >
+            {location.pathname === '/cadastro' ? 'Home' : 'Cadastrar'}
+          </Link>
+        </Button>
+
+        {location.pathname !== '/cadastro' && (
+          <Button onClick={logOut}>
+            <Link
+              style={{ ...btnStyle }}
+              to={location.pathname === '/' ? '/login' : '/'}
+            >
+              {location.pathname === '/login'
+                ? 'Home'
+                : localStorage.getItem('AuthToken')
+                ? 'Sair'
+                : 'Entrar'}
+            </Link>
+          </Button>
+        )}
+      </div>
     </Container>
   );
 }

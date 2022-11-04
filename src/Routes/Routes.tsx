@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
-import { GoalsPage, HomePage, LoginPage } from '../pages';
+import { GoalsPage, HomePage, LoginPage, RegisterPage } from '../pages';
 
 interface Props {
   children: ReactNode;
@@ -13,6 +13,7 @@ export function ZoeRoutes({ children }: Props) {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/login' element={<LoginPage />} />
+        <Route path='/cadastro' element={<RegisterPage />} />
         <Route path='/metas' element={<GoalsPage />} />
       </Routes>
     </BrowserRouter>
