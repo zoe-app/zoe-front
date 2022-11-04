@@ -1,7 +1,7 @@
 /* eslint-disable react/no-children-prop */
 import React from 'react';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
-import { GoalsPage, HomePage, LoginPage } from '../../pages';
+import { GoalsPage, HomePage, LoginPage } from '../pages';
 
 export function ZoeRoutes() {
   return (

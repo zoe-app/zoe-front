@@ -1,3 +1,3 @@
 export * from './Login';
 export * from './Home';
-export * from './Goals';
+export * from './Goals/GoalPage';

@@ -4,7 +4,7 @@ export interface Goal {
   progress: number;
   name: string;
   createdAt: Date;
-  id: string;
+  goalId: string;
   userId: string;
-  tasks?: Task[];
+  tasks: Task[];
 }

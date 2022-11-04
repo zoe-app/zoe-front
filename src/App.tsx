@@ -1,5 +1,5 @@
 import React from 'react';
-import { ZoeRoutes } from './components';
+import { ZoeRoutes } from './Routes';
 
 function App() {
   return (
