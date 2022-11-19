@@ -28,7 +28,7 @@ export function LoginPage() {
   return (
     <Container>
       <FormContainer>
-        <Title>Login</Title>
+        <Title>login</Title>
         <TextInput
           style={{ marginBottom: '1.2rem' }}
           type='text'
@@ -45,7 +45,7 @@ export function LoginPage() {
         />
         {error && <span style={{ color: 'red' }}>{error}</span>}
         <Button type='button' onClick={onLogin}>
-          Login
+          login
         </Button>
       </FormContainer>
     </Container>

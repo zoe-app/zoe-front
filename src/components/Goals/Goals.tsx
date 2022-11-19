@@ -90,18 +90,18 @@ export function GoalsComponent(props: Props) {
               fontSize: '1.2rem',
             }}
           >
-            Progresso: {Math.trunc(progress)}%
+            progresso: {Math.trunc(progress)}%
           </span>
         </RowContainer>
         <RowContainer>
           <TextInput
             type='text'
-            placeholder='Nova tarefa'
+            placeholder='nova tarefa'
             value={taskText}
             onChange={(e) => setTaskText(e.target.value)}
           />
           <Button style={{ marginLeft: 10 }} type='button' onClick={addNewTask}>
-            Adicionar
+            adicionar
           </Button>
         </RowContainer>
       </RowContainer>

@@ -28,12 +28,12 @@ export function NavBar() {
 
   return (
     <Container>
-      <Title>Zoe</Title>
+      <Title>zoe</Title>
       <div>
         {token === 'undefined' && (
           <Button style={{ marginRight: 10 }}>
             <Link style={{ ...btnStyle }} to={path === '/' ? '/cadastro' : '/'}>
-              {path === '/cadastro' ? 'Home' : 'Cadastrar'}
+              {path === '/cadastro' ? 'home' : 'cadastrar'}
             </Link>
           </Button>
         )}
@@ -42,10 +42,10 @@ export function NavBar() {
           <Button onClick={logOut}>
             <Link style={{ ...btnStyle }} to={path === '/' ? '/login' : '/'}>
               {path === '/login'
-                ? 'Home'
+                ? 'home'
                 : localStorage.getItem('AuthToken')
-                ? 'Sair'
-                : 'Entrar'}
+                ? 'sair'
+                : 'entrar'}
             </Link>
           </Button>
         )}

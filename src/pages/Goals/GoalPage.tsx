@@ -41,13 +41,13 @@ export function GoalsPage() {
       >
         <TextInput
           type='text'
-          placeholder='Nova meta'
+          placeholder='nova meta'
           style={{ width: '100%' }}
           value={goalText}
           onChange={(e) => setGoalText(e.target.value)}
         />
         <Button style={{ marginLeft: 10 }} type='button' onClick={addNewGoal}>
-          Adicionar
+          adicionar
         </Button>
       </RowContainer>
       {goals.map((goal) => {
