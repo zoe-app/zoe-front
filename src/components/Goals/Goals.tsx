@@ -19,9 +19,9 @@ export function GoalsComponent(props: Props) {
   const { goal, setGoalCallback, goalsList } = props;
   const [goalState, setGoal] = useState<Goal>(goal);
   const [taskText, setTaskText] = useState<string>('');
+  const [progress, setProgress] = useState<number>(goal.progress);
 
   const updateIsDone = async (task: Task, setTask: (value: Task) => void) => {
-    // FIXME: Otimizar func
     await tasksService.updateIsDone(task.taskId);
     setTask({ ...task, isDone: !task.isDone });
 
@@ -30,11 +30,13 @@ export function GoalsComponent(props: Props) {
 
     const newGoal = await goalsService.getGoalById(task.goalId);
     setGoal(newGoal);
+    setProgress(newGoal.progress);
   };
 
   const addNewTask = async () => {
     const newTask = await tasksService.createTask(taskText, goalState.goalId);
-    setGoal({ ...goalState, tasks: [...goalState.tasks, newTask] });
+    setGoal({ ...goalState, tasks: [...goalState.tasks, newTask.task] });
+    setProgress(newTask.progress);
     setTaskText('');
   };
 
@@ -45,8 +47,9 @@ export function GoalsComponent(props: Props) {
   };
 
   const deleteTask = async (taskId: string) => {
-    await tasksService.deleteTask(taskId);
+    const deleteProgress = await tasksService.deleteTask(taskId);
     const newTaskLst = goalState.tasks.filter((x) => x.taskId !== taskId);
+    setProgress(deleteProgress);
     setGoal({ ...goalState, tasks: newTaskLst });
   };
 
@@ -79,6 +82,16 @@ export function GoalsComponent(props: Props) {
           >
             X
           </DeleteButton>
+          <span
+            style={{
+              color: 'white',
+              fontWeight: 600,
+              marginLeft: 10,
+              fontSize: '1.2rem',
+            }}
+          >
+            Progresso: {Math.trunc(progress)}%
+          </span>
         </RowContainer>
         <RowContainer>
           <TextInput

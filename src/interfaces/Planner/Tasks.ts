@@ -1,3 +1,5 @@
+import { Goal } from './Goals';
+
 export interface Task {
   taskId: string;
   createdAt: Date;
@@ -5,4 +7,14 @@ export interface Task {
   isDone: boolean;
   userId: string;
   goalId: string;
+}
+
+export interface UpdateDto {
+  task: Task;
+  goal: Goal;
+}
+
+export interface CreateTaskDto {
+  task: Task;
+  progress: number;
 }

@@ -1,6 +1,7 @@
 export interface LoginPayload {
   token: string;
   userId: string;
+  error?: string;
 }
 
 export interface RegisterDto {
@@ -16,4 +17,5 @@ export interface RegisterPayload {
   email: string;
   points: number;
   id: string;
+  error?: string;
 }

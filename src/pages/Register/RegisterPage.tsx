@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, TextInput, Title } from '../../components';
 import { RegisterDto } from '../../interfaces';
 import { authService } from '../../service';
+import { getRegisterErrorMessage } from '../../utils';
 import { Container, FormContainer } from './Container';
 
 export function RegisterPage() {
@@ -14,9 +15,18 @@ export function RegisterPage() {
     name: '',
     password: '',
   });
+  const [error, setError] = useState('');
 
   const onRegister = async () => {
-    await authService.register(state);
+    const res = await authService.register(state);
+
+    if (res.error) {
+      const errorMsg = getRegisterErrorMessage(res.error);
+      setError(errorMsg);
+      return;
+    }
+
+    setError('');
     navigate('/');
   };
 
@@ -58,6 +68,7 @@ export function RegisterPage() {
             setState({ ...state, password: event.target.value })
           }
         />
+        {error && <span style={{ color: 'red' }}>{error}</span>}
         <Button type='button' onClick={onRegister}>
           Cadastrar
         </Button>
